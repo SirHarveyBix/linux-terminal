@@ -3,7 +3,7 @@
 si tu n'a pas accès a linux, pas besoin de l'installer.
 il te faut docker et lancer la commande :
 
-1. `docker build .`,
+1. `docker build -t linux .`,
 2. `docker run -it --name=linux -v ./src/:/app --rm linux`
 
 pour quitter linux ouvre un nouveau terminal / onglet et lance la commande :
