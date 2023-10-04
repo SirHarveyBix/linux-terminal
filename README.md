@@ -15,10 +15,19 @@ pour relancer :
 
  <details close><summary><i>+ sur docker</i></summary>
 
-  pour afficher les container en cours: `docker container ls -a`
-  pour tuer tout les contaiers : `docker container prune -a`
-  ou uniquement _linux_ : `docker container rm linux`
-  meme chose pour l'image :
+pour afficher les container en cours:
+
+1. `docker container ls -a`
+
+pour tuer tout les containers :
+
+2. `docker container prune -a`
+
+ou uniquement _linux_ :
+
+3. `docker container rm linux`
+
+meme chose pour l'image :
 
 - `docker images`
 - `docker image rm [IMAGE ID]`
