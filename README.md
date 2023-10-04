@@ -3,15 +3,16 @@
 si tu n'a pas accès a linux, pas besoin de l'installer.
 il te faut docker et lancer la commande :
 
-1. `docker run -it --name=linux ubuntu bash`,
+1. `docker build .`,
+2. `docker run -it --name=linux -v ./src/:/app --rm linux`
 
 pour quitter linux ouvre un nouveau terminal / onglet et lance la commande :
 
-2. `docker stop linux`
+3. `docker stop linux`
 
-pour relancer :
+pour relancer, il te faut refaire la commane 2:
 
-3. `docker start -a linux`
+4. `docker run -it --name=linux -v ./src/:/app --rm linux`
 
  <details close><summary><i>+ sur docker</i></summary>
 
@@ -31,6 +32,8 @@ meme chose pour l'image :
 
 - `docker images`
 - `docker image rm [IMAGE ID]`
-  
+ou :
+- `docker image prune -a` _`-a` pour supprimer toutes les images_
+
 ton system sera plus clean
   </details>
