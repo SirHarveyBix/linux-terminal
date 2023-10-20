@@ -29,6 +29,13 @@ pour relancer, il te faut refaire la commane 2:
 
  <details close><summary><i>+ sur docker</i></summary>
 
+ ou plus simplement :
+
+ ```shell
+ docker run -it ubuntu
+ ```
+ > il faudra stoper le container en recuperant son nom (`docker container ls`), et aucun volume ne sera alouable.
+
 pour afficher les container en cours:
 
 1.
