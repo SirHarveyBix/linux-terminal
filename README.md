@@ -11,6 +11,7 @@ il te faut docker et lancer la commande :
 2.
      ```shell
      docker run -it --name=linux -v ./src/:/app --rm linux
+    # docker run -it --name=linux -v ./src/:/app -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --rm linux
      ```
 
 pour quitter linux ouvre un nouveau terminal / onglet et lance la commande :
