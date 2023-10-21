@@ -12,7 +12,6 @@ RUN apt-get update -y && \
   libgconf-2-4 \
   libnss3 \
   libasound2 \
-  gnupg \
   git -y \
   zsh -y \
   libatk-bridge2.0-0 \
@@ -34,23 +33,45 @@ RUN apt-get update -y && \
 # Ajout de Oh-My-Zsh
 RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
-# Créez un répertoire pour Visual Studio Code et extrayez l'archive
-RUN mkdir -p /app/vscode && curl -L -o /app/vscode/vscode.deb "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-arm64" && dpkg -i /app/vscode/vscode.deb && rm /app/vscode/vscode.deb
+# Installez code-server en tant qu'utilisateur root
+USER root
+RUN curl -fsSL https://code-server.dev/install.sh | sh
+
+# Créez un nouvel utilisateur non privilégié (par exemple, "appuser")
+RUN useradd -ms /bin/zsh appuser
+
+# Ajoutez "appuser" au groupe sudo pour lui donner des privilèges sudo
+RUN usermod -aG sudo appuser
+
+# Changez à l'utilisateur non privilégié
+USER appuser
+
+# Créez un répertoire .config avec les bonnes permissions
+RUN mkdir -p /home/appuser/.config
+
+# Créez un répertoire .local avec les bonnes permissions
+RUN mkdir -p /home/appuser/.local
+
+# Téléchargez et installez Visual Studio Code dans le répertoire de l'utilisateur
+RUN wget "https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-arm64" -O /home/appuser/vscode.deb
+RUN dpkg -i /home/appuser/vscode.deb
+RUN rm /home/appuser/vscode.deb
 
 # Copiez le fichier .zshrc avec des configurations par défaut
-COPY /src/.zshrc /home/vscodeuser/.zshrc
-
-# Créez un répertoire pour Visual Studio Code
-RUN mkdir -p /app/vscode
-
-# Créez un nouvel utilisateur non privilégié
-RUN useradd -ms /bin/zsh vscodeuser
-
-# Changer à l'utilisateur non privilégié
-USER vscodeuser
+COPY /src/.zshrc /home/appuser/.zshrc
 
 # Définissez le répertoire de travail par défaut
-WORKDIR /app
+WORKDIR /home/appuser
 
 # Exécutez Zsh au démarrage du conteneur
 CMD ["zsh"]
+
+
+# Utilisez une image Docker contenant déjà Visual Studio Code
+FROM codercom/code-server:latest
+
+# Définissez un utilisateur non privilégié (vous pouvez modifier l'utilisateur selon vos besoins)
+USER coder
+
+# Laissez le conteneur en cours d'exécution
+CMD ["--auth", "none"]
