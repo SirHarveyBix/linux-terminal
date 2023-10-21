@@ -1,4 +1,3 @@
-# Utilisez une image de base compatible ARM64
 FROM ubuntu:latest
 
 # Mise à jour du système et installation des outils nécessaires
