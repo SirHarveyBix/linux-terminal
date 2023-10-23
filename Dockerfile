@@ -7,6 +7,8 @@ RUN apt-get update -y && apt-get install -y \
   sudo \
   git \
   man \
+  tree \
+  htop \
   zsh
 
 # Ajout de Oh-My-Zsh

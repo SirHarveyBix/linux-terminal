@@ -13,6 +13,12 @@ il te faut docker et lancer la commande :
      docker run -it --name=linux -v ./src/:/app --rm linux
      ```
 
+    - ouvrir un second terminal depuis le container __`linux`__ :
+
+        ```shell
+        docker exec -it linux zsh
+        ```
+
 pour quitter linux ouvre un nouveau terminal / onglet et lance la commande :
 
 3.
