@@ -6,10 +6,14 @@ RUN apt-get update -y && apt-get install -y \
   vim \
   sudo \
   git \
+  man \
   zsh
 
 # Ajout de Oh-My-Zsh
 RUN sh -c "$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+
+# This script restores content and packages that are found on a default Ubuntu system
+RUN sh -c yes | unminimize
 
 # Nettoyage du cache APT
 RUN apt-get clean
