@@ -1,19 +1,32 @@
 # CLI linux
 
-## 
+## SSH
 
-Recuperer les fichiers :
-`wget https://ocw.mit.edu/ans7870/6/6.006/s08/lecturenotes/files/t8.shakespeare.txt`
-`mv t8.shakespeare.txt shakespeare.txt`
+Creer ton instance & essaie de te connecter a cette adresse :
+<https://labs.play-with-docker.com/>
 
-`wget https://www.gutenberg.org/files/84/84-0.txt`
-`mv 84-0.txt frankenstein.txt`
+par defaut `ssh` utilise le port (_`-p 22`_) 22
 
-`wget https://www.gutenberg.org/files/345/345-0.txt`
-`mv 345-0.txt dracula.txt`
+---
 
-compression :
-`tar -cvf [NOM ARCHIVE] [FICHIER1 FICHIER2 ...]`
+il nous faut une clé pour se connecter :
 
-decompression:
-`tar -xvf [NOM ARCHIVE]`
+ou peu creer une clé de cette maniere :
+
+- `ssh-keygen`
+  - tu peux utiliser ce chemin: `./id_rsa`
+
+ou alors il faudra récupérer nos clés (publique et privé :  `id_rsa.pub` & `id_rsa` ) depuis notre sandbox:
+
+- `cd ~/.ssh`, et recuperer: __`id_rsa`__ & __`id_rsa.pub`__
+
+>peu importe l'origine de la clé, il faudra qu'elles soient identique, sinon : __`Permission denied (publickey).`__
+
+les copiers dans le dossier src _(`/app` de notre container linux)_, et lancer la commande :
+
+```shell
+ssh [USER]@direct.labs.play-with-docker.com -i id_rsa
+# -i identity_file
+```
+
+> _il s'agit bien de la clé privé._
