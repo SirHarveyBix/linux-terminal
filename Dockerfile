@@ -26,6 +26,12 @@ RUN usermod -aG sudo utilisateur
 # Créez un fichier pour autoriser les règles sudo
 RUN echo "utilisateur ALL=(ALL) ALL" >> /etc/sudoers.d/utilisateur
 
+# Copiez un fichier .zshrc par défaut
+COPY src/.zshrc /home/utilisateur/.zshrc
+
+# Nettoyage du cache APT
+RUN apt-get clean && apt-get autoremove
+
 # Installation de oh-my-zsh #
 # Ajouter les fichiers du script shell
 ADD src/ohmyzsh-setup.sh /app/ohmyzsh-setup.sh
@@ -35,12 +41,6 @@ RUN chmod +x /app/ohmyzsh-setup.sh
 
 # Exécuter le script & Nettoyer après l'exécution
 RUN /app/ohmyzsh-setup.sh && rm /app/ohmyzsh-setup.sh
-
-# Copiez un fichier .zshrc par défaut
-COPY src/.zshrc /home/utilisateur/.zshrc
-
-# Nettoyage du cache APT
-RUN apt-get clean && apt-get autoremove
 
 # Définissez le répertoire de travail par défaut
 WORKDIR /app
