@@ -5,7 +5,7 @@
 Creer ton instance & essaie de te connecter a cette adresse :
 <https://labs.play-with-docker.com/>
 
-par defaut `ssh` utilise le port (_`-p 22`_) 22
+_par defaut `ssh` utilise le port (_`-p 22`_) 22_
 
 ---
 
@@ -20,9 +20,10 @@ ou alors il faudra récupérer nos clés (publique et privé :  `id_rsa.pub` & `
 
 - `cd ~/.ssh`, et recuperer: __`id_rsa`__ & __`id_rsa.pub`__
 
->peu importe l'origine de la clé, il faudra qu'elles soient identique, sinon : __`Permission denied (publickey).`__
+>peu importe l'origine de la clé, il faudra qu'elles soient identique, sinon:
+__`Permission denied (publickey).`__
 
-les copiers dans le dossier src _(`/app` de notre container linux)_, et lancer la commande :
+les copiers dans le dossier _`/src`_ _(`/app` de notre container linux)_, et lancer la commande :
 
 ```shell
 ssh [USER]@direct.labs.play-with-docker.com -i id_rsa
