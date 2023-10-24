@@ -15,19 +15,19 @@ RUN apt-get update -y && apt-get install -y \
 RUN sh -c yes | unminimize
 
 # Créez un nouvel utilisateur
-RUN useradd -m -s /bin/zsh utilisateur
+RUN useradd -m -s /bin/zsh admin
 
 # Définissez un mot de passe pour le nouvel utilisateur
-RUN echo "utilisateur:admin" | chpasswd
+RUN echo "admin:admin" | chpasswd
 
 # Ajoutez le nouvel utilisateur au groupe "sudo" s'il doit avoir des privilèges sudo
-RUN usermod -aG sudo utilisateur
+RUN usermod -aG sudo admin
 
 # Créez un fichier pour autoriser les règles sudo
-RUN echo "utilisateur ALL=(ALL) ALL" >> /etc/sudoers.d/utilisateur
+RUN echo "admin ALL=(ALL) ALL" >> /etc/sudoers.d/admin
 
 # Copiez un fichier .zshrc par défaut
-COPY src/.zshrc /home/utilisateur/.zshrc
+COPY src/.zshrc /home/admin/.zshrc
 
 # Nettoyage du cache APT
 RUN apt-get clean && apt-get autoremove
@@ -46,4 +46,4 @@ RUN /app/ohmyzsh-setup.sh && rm /app/ohmyzsh-setup.sh
 WORKDIR /app
 
 # Exécutez Zsh au démarrage du conteneur avec le nouvel utilisateur
-CMD ["sudo", "-u", "utilisateur", "zsh"]
+CMD ["sudo", "-u", "admin", "zsh"]

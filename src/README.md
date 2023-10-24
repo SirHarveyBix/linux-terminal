@@ -5,7 +5,7 @@
 Creer ton instance & essaie de te connecter a cette adresse :
 <https://labs.play-with-docker.com/>
 
-_par defaut `ssh` utilise le port (_`-p 22`_) 22_
+*par defaut `ssh` utilise le port (*`-p 22`*) 22*
 
 ---
 
@@ -18,16 +18,29 @@ ou peu creer une clé de cette maniere :
 
 ou alors il faudra récupérer nos clés (publique et privé :  `id_rsa.pub` & `id_rsa` ) depuis notre sandbox:
 
-- `cd ~/.ssh`, et recuperer: __`id_rsa`__ & __`id_rsa.pub`__
+- `cd ~/.ssh`, et recuperer: **`id_rsa`** & **`id_rsa.pub`**
 
 >peu importe l'origine de la clé, il faudra qu'elles soient identique, sinon:
-__`Permission denied (publickey).`__
+**`Permission denied (publickey).`**
 
-les copiers dans le dossier _`/src`_ _(`/app` de notre container linux)_, et lancer la commande :
+les copiers dans le dossier *`/src`* *(`/app` de notre container linux)*, et lancer la commande :
 
 ```shell
 ssh [USER]@direct.labs.play-with-docker.com -i id_rsa
 # -i identity_file
 ```
 
-> _il s'agit bien de la clé privé._
+> *il s'agit bien de la clé privé.*
+
+---
+
+## `chmod`: droits d'accès & permissions
+
+`chmod` => **ch***ange* **mod** *bits* (changer droit d'accès)
+
+- ajouter des droits: `+x`, `+w`, `+r`
+- supprimer des droits: `-x`, `-w`, `-r`
+- (**`x`**: *execute*,**`r`**: *read*, **`w`**: *write*)
+
+`chown` => **ch***ange* **own***er*
+`chgrp` => **ch***ange* **gr***ou***p**
