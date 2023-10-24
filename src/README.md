@@ -44,3 +44,18 @@ ssh [USER]@direct.labs.play-with-docker.com -i id_rsa
 
 `chown` => **ch***ange* **own***er*
 `chgrp` => **ch***ange* **gr***ou***p**
+
+### exemple d'ajout de droits
+
+`chmod u+x nom_dossier` : donnera accès aux utilisateurs  a `nom_dossier`
+
+- `u`=> users
+- `g`=> group *(peu utilisé)*
+- `o`=> others *(peu utilisé)*
+- `a`=> all *(peu utilisé)*
+
+`chmod u+rwx,g+rx-w,o+r-wx nom_dossier`
+
+>- ajoute touts les droits a **u**sers (**r**ead, **w**rite & e**x**ecute)
+>- ajoute les droits: **r**ead & e**x**ecute, supprime le droit **w**rite a **g**roup
+>- ajoute **r**ead & supprime **w**rite & e**x**ecute a **o**thers
