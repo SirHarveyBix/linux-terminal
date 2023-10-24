@@ -23,11 +23,11 @@ RUN echo "admin:admin" | chpasswd
 # Ajoutez le nouvel utilisateur au groupe "sudo" s'il doit avoir des privilèges sudo
 RUN usermod -aG sudo admin
 
-# Créez un fichier pour autoriser les règles sudo
-RUN echo "admin ALL=(ALL) ALL" >> /etc/sudoers.d/admin
-
 # Copiez un fichier .zshrc par défaut
 COPY src/.zshrc /home/admin/.zshrc
+
+# Créez un fichier pour autoriser les règles sudo
+RUN echo "admin ALL=(ALL:ALL) ALL" >> /etc/sudoers.d/admin
 
 # Nettoyage du cache APT
 RUN apt-get clean && apt-get autoremove
@@ -46,4 +46,4 @@ RUN /app/ohmyzsh-setup.sh && rm /app/ohmyzsh-setup.sh
 WORKDIR /app
 
 # Exécutez Zsh au démarrage du conteneur avec le nouvel utilisateur
-CMD ["sudo", "-u", "admin", "zsh"]
+CMD ["su", "admin"]

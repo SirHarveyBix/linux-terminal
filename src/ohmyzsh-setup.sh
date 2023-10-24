@@ -9,3 +9,4 @@ git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH_CUSTOM
 git clone https://github.com/zsh-users/zsh-completions $ZSH_CUSTOM/custom/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-history-substring-search $ZSH_CUSTOM/custom/plugins/zsh-history-substring-search
 git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/custom/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/custom/plugins/zsh-syntax-highlighting

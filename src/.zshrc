@@ -6,11 +6,7 @@ ZSH_THEME=robbyrussell
 # Uncomment the following line to use case-sensitive completion.
 CASE_SENSITIVE="false"
 
-plugins=($plugins git zsh-autosuggestions zsh-completions zsh-history-substring-search cp)
-
-# Activez la complétion intelligente (tabulation) (optionnel)
-autoload -U compinit
-compinit
+plugins=($plugins git z zsh-autosuggestions zsh-completions zsh-history-substring-search zsh-syntax-highlighting cp)
 
 # Configurez d'autres options Zsh (vous pouvez personnaliser ceci)
 setopt autocd
