@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export ZSH_CUSTOM="/home/utilisateur/.oh-my-zsh"
+export ZSH_CUSTOM="/home/admin/.oh-my-zsh"
 
 # Cloner Oh-My-Zsh
 git clone https://github.com/ohmyzsh/ohmyzsh.git $ZSH_CUSTOM
